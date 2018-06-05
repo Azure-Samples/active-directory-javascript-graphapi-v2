@@ -15,7 +15,7 @@
           "type": "Web"
         }
       ],
-      "oauth2AllowImplicitFlow": "true",
+      "oauth2AllowImplicitFlow": true,
       "requiredResourceAccess": [
         {
           "x-ms-resourceAppName": "Microsoft Graph",
