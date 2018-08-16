@@ -15,14 +15,13 @@ var port = 44316; // process.env.PORT || 44316;
 app.use(morgan('dev'));
 
 // Set the front-end folder to serve public assets.
-app.use("/dist", express.static(path.join(__dirname, "../../dist")));
-app.use("/bower_components", express.static(path.join(__dirname, 'bower_components')));
+app.use(express.static('JavaScriptSPA'))
 
 // Set up our one route to the index.html file.
 app.get('*', function (req, res) {
-    res.sendFile(path.join(__dirname + '/index_LoginRedirect.html'));
+    res.sendFile(path.join(__dirname + '/index.html'));
 });
 
 // Start the server.
 app.listen(port);
-console.log('Listening on port ' + port + '...'); 
+console.log('Listening on port ' + port + '...');
