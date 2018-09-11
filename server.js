@@ -9,19 +9,20 @@ var morgan = require('morgan');
 var path = require('path');
 
 // Initialize variables.
-var port = 44316; // process.env.PORT || 44316;
+var port = 1530; // process.env.PORT || 8080;
 
 // Configure morgan module to log all requests.
 app.use(morgan('dev'));
 
 // Set the front-end folder to serve public assets.
-app.use(express.static('JavaScriptSPA'))
+//app.use("/dist", express.static(path.join(__dirname, "../../dist")));
+app.use("/bower_components", express.static(path.join(__dirname, 'bower_components')));
 
 // Set up our one route to the index.html file.
 app.get('*', function (req, res) {
-    res.sendFile(path.join(__dirname + '/index.html'));
+    res.sendFile(path.join(__dirname + '/index_LoginRedirect.html'));
 });
 
 // Start the server.
 app.listen(port);
-console.log('Listening on port ' + port + '...');
+console.log('Listening on port ' + port + '...'); 
