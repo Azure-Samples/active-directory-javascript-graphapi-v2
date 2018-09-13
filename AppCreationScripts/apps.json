@@ -11,7 +11,7 @@
       "x-ms-version": "2.0",
       "replyUrlsWithType": [
         {
-          "url": "https://localhost:44316/",
+          "url": "http://localhost:44316/",
           "type": "Web"
         }
       ],
