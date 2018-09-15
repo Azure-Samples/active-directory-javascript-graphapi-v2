@@ -28,7 +28,7 @@
         var myMSALObj = new Msal.UserAgentApplication(applicationConfig.clientID, null, userSignedIn);
 
         function signIn() {
-            myMSALObj.loginRedirect();
+            myMSALObj.loginRedirect(applicationConfig.graphScopes);
         }
 
         function signOut() {
