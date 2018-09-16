@@ -65,9 +65,8 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="app.js" />
     <Content Include="index.html" />
-    <Content Include="msalconfig.js" />
+    <Content Include="index_login_redirect.html" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
