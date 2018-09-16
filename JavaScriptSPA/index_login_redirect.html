@@ -15,44 +15,48 @@
 <body>
     <h2>Welcome to MSAL.js Quickstart</h2><br/>
     <h4 id="WelcomeMessage"></h4>
-    <button id="SignIn" onclick="signIn()">Sign In</button><br/><br/>
+    <button id="SignIn" onclick="signIn()">Sign In</button><br /><br />
     <table id="graphData"></table>
 
     <script>
         var applicationConfig = {
-            clientID: "Enter_the_Application_Id_here", //This is your client ID
+            clientID: 'Enter_the_Application_Id_here', //This is your client ID
             graphScopes: ["user.read"],
             graphEndpoint: "https://graph.microsoft.com/v1.0/me"
         };
 
-        //Pass null for default authority (https://login.microsoftonline.com/common) and tokenReceivedCallback if using popup apis
-        var myMSALObj = new Msal.UserAgentApplication(applicationConfig.clientID, null, null);
+        //pass null for default authority (https://login.microsoftonline.com/common) and tokenReceivedCallback if using popup api's'
+        var myMSALObj = new Msal.UserAgentApplication(applicationConfig.clientID, null, userSignedIn);
 
         function signIn() {
-            myMSALObj.loginPopup(applicationConfig.graphScopes).then(function (idToken) {
-                //Login Success
-                showWelcomeMessage();
-                acquireTokenAndCallMSGraph();
-            }, function (error) {
-                console.log(error);
-            });
+            myMSALObj.loginRedirect(applicationConfig.graphScopes);
         }
 
         function signOut() {
             myMSALObj.logout();
         }
 
-        function acquireTokenAndCallMSGraph() {
-            //Call acquireTokenSilent (hidden iframe) to obtain a token for Microsoft Graph
+        function userSignedIn(errorDesc, token, error, tokenType) {
+            //In redirect mode, use this inside callback to access an instance of userAgentApplication
+            var self = this;
+            if (token) {
+                if (tokenType === "id_token") {
+                    showWelcomeMessage(self);
+                }
+            }
+            else if (errorDesc || error) {
+                console.log(error + ' : ' + errorDesc);
+            }
+        }
+
+        function acquireTokenAndCallMSGraph(myMSALObj) {
+            //Call acquireTokenSilent (iframe) to obtain a token for Microsoft Graph
             myMSALObj.acquireTokenSilent(applicationConfig.graphScopes).then(function (accessToken) {
                 callMSGraph(applicationConfig.graphEndpoint, accessToken, graphAPICallback);
             }, function (error) {
-                //Call acquireTokenPopup (popup window) in case of acquireToken Failure
+                //Call acquireTokenRedirect in case of acquireToken Failure
                 if (error.indexOf("consent_required") !== -1 || error.indexOf("interaction_required") !== -1) {
-                    myMSALObj.acquireTokenPopup(applicationConfig.graphScopes).then(function (accessToken) {
-                        callMSGraph(applicationConfig.graphEndpoint, accessToken, graphAPICallback);
-                    }, function (error) {
-                    });
+                    myMSALObj.acquireTokenRedirect(applicationConfig.graphScopes);
                 }
             });
         }
@@ -80,17 +84,17 @@
             });
         }
 
-        function showWelcomeMessage() {
+        function showWelcomeMessage(myMSALObj) {
             var divWelcome = document.getElementById('WelcomeMessage');
-            divWelcome.innerHTML += 'Welcome ' + myMSALObj.getUser().name;
+            divWelcome.innerHTML = 'Welcome ' + myMSALObj.getUser().name;
             var loginbutton = document.getElementById('SignIn');
             loginbutton.innerHTML = 'Sign Out';
             loginbutton.setAttribute('onclick', 'signOut();');
         }
 
-        if (myMSALObj.getUser() && !myMSALObj.isCallback(window.location.hash)) {// avoid duplicate code execution on page load in case of iframe and popup window.
-            showWelcomeMessage();
-            acquireTokenAndCallMSGraph();
+        if (myMSALObj && myMSALObj.getUser() && !myMSALObj.loginInProgress() && !myMSALObj.isCallback(window.location.hash)) {// avoid duplicate code execution on page load in case of iframe and popup window.
+            showWelcomeMessage(myMSALObj);
+            acquireTokenAndCallMSGraph(myMSALObj);
         }
     </script>
 </body>
