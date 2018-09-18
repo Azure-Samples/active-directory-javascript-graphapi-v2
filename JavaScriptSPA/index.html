@@ -23,13 +23,13 @@
 		var isEdge = msedge > 0;
 	
         var applicationConfig = {
-            clientID: "Enter_the_Application_Id_here", //This is your client ID
+            clientID: "0813e1d1-ad72-46a9-8665-399bba48c201", //This is your client ID
             graphScopes: ["user.read"],
             graphEndpoint: "https://graph.microsoft.com/v1.0/me"
         };
 
         //Pass null for default authority (https://login.microsoftonline.com/common) and tokenReceivedCallback if using popup apis
-        var myMSALObj = new Msal.UserAgentApplication(applicationConfig.clientID, null, null, {storeAuthStateInCookie:true});
+        var myMSALObj = new Msal.UserAgentApplication(applicationConfig.clientID, null, null, {storeAuthStateInCookie:true, cacheLocation:"localStorage"});
 				
         function signIn() {
 			myMSALObj.loginPopup(applicationConfig.graphScopes).then(function (idToken) {
@@ -50,31 +50,12 @@
             myMSALObj.acquireTokenSilent(applicationConfig.graphScopes).then(function (accessToken) {
                 callMSGraph(applicationConfig.graphEndpoint, accessToken, graphAPICallback);
             }, function (error) {
-				if (isIE) {
-					// NOTE: only for IE browsers
-					// Call acquireTokenRedirect in case of acquireToken Failure
-					if (error.indexOf("consent_required") !== -1 || error.indexOf("interaction_required") !== -1) {
-						myMSALObj.acquireTokenRedirect(applicationConfig.graphScopes);
-					}
-				}
-				// Uncomment this if you are testing in Edge InPrivate, or delete
-				/**
-				else if(msedge > 0) {
-					// NOTE: only for Edge InPrivate browsers
-					// Call acquireTokenRedirect in case of acquireToken Failure
-					if (error.indexOf("consent_required") !== -1 || error.indexOf("interaction_required") !== -1) {
-						myMSALObj.acquireTokenRedirect(applicationConfig.graphScopes);
-					}
-				}
-				**/
-				else {
-					// Call acquireTokenPopup (popup window) in case of acquireToken Failure
-					if (error.indexOf("consent_required") !== -1 || error.indexOf("interaction_required") !== -1) {
-						myMSALObj.acquireTokenPopup(applicationConfig.graphScopes).then(function (accessToken) {
-							callMSGraph(applicationConfig.graphEndpoint, accessToken, graphAPICallback);
-						}, function (error) {
-						});
-					}
+				// Call acquireTokenPopup (popup window) in case of acquireToken Failure
+				if (error.indexOf("consent_required") !== -1 || error.indexOf("interaction_required") !== -1) {
+					myMSALObj.acquireTokenPopup(applicationConfig.graphScopes).then(function (accessToken) {
+						callMSGraph(applicationConfig.graphEndpoint, accessToken, graphAPICallback);
+					}, function (error) {
+					});
 				}
             });
         }
@@ -104,11 +85,23 @@
             loginbutton.setAttribute('onclick', 'signOut();');
         }
 		
-		// Remove this code if IE is not used
+		/** 
+		if (myMSALObj.getUser() && !myMSALObj.isCallback(window.location.hash)) {// avoid duplicate code execution on page load in case of iframe and popup window.
+			showWelcomeMessage();
+			acquireTokenAndCallMSGraph();
+		}
+		**/
+		
+		// Uncomment the above code and delete the below code if you are not using browser detection
+		
 		if(isIE) {
 			document.getElementById("SignIn").onclick = function() {
 				myMSALObj.loginRedirect(applicationConfig.graphScopes);
 			};
+			if (myMSALObj.getUser() && !myMSALObj.isCallback(window.location.hash)) {// avoid duplicate code execution on page load in case of iframe and popup window.
+				showWelcomeMessage();
+				acquireTokenRedirectAndCallMSGraph();
+			}
 		} 
 		// Uncomment this if you are testing in Edge InPrivate, or delete
 		/**
@@ -116,12 +109,30 @@
 			document.getElementById("SignIn").onclick = function () { 
 				myMSALObj.loginRedirect(applicationConfig.graphScopes);
 			};
+			if (myMSALObj.getUser() && !myMSALObj.isCallback(window.location.hash)) {// avoid duplicate code execution on page load in case of iframe and popup window.
+				showWelcomeMessage();
+				acquireTokenRedirectAndCallMSGraph();
+			}
 		}
 		**/
-
-        if (myMSALObj.getUser() && !myMSALObj.isCallback(window.location.hash)) {// avoid duplicate code execution on page load in case of iframe and popup window.
-			showWelcomeMessage();
-            acquireTokenAndCallMSGraph();
+		else {
+			if (myMSALObj.getUser() && !myMSALObj.isCallback(window.location.hash)) {// avoid duplicate code execution on page load in case of iframe and popup window.
+				showWelcomeMessage();
+				acquireTokenAndCallMSGraph();
+			}
+		}
+        
+		// This function can be removed if browser detection isn't needed	
+		function acquireTokenRedirectAndCallMSGraph(myMSALObj) {
+            //Call acquireTokenSilent (iframe) to obtain a token for Microsoft Graph
+            myMSALObj.acquireTokenSilent(applicationConfig.graphScopes).then(function (accessToken) {
+                callMSGraph(applicationConfig.graphEndpoint, accessToken, graphAPICallback);
+            }, function (error) {
+                //Call acquireTokenRedirect in case of acquireToken Failure
+                if (error.indexOf("consent_required") !== -1 || error.indexOf("interaction_required") !== -1) {
+                    myMSALObj.acquireTokenRedirect(applicationConfig.graphScopes);
+                }
+            });
         }
 				
     </script>
