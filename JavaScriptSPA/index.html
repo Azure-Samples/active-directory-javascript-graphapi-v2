@@ -51,7 +51,6 @@
                 callMSGraph(applicationConfig.graphEndpoint, accessToken, graphAPICallback);
             }, function (error) {
 				if (isIE) {
-					alert("IE");
 					// NOTE: only for IE browsers
 					// Call acquireTokenRedirect in case of acquireToken Failure
 					if (error.indexOf("consent_required") !== -1 || error.indexOf("interaction_required") !== -1) {
