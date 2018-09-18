@@ -2,21 +2,16 @@
 <html>
 <head>
     <title>Quickstart for MSAL JS</title>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/bluebird/3.3.4/bluebird.min.js"></script>
     <script src="https://secure.aadcdn.microsoftonline-p.com/lib/0.2.3/js/msal.js"></script>
-    <script src="https://code.jquery.com/jquery-3.2.1.min.js" class="pre"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/bluebird/3.3.4/bluebird.min.js" class="pre"></script>
-    <style>
-        table, td, th {
-            border: 1px solid black;
-        }
-    </style>
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
 </head>
 
 <body>
     <h2>Welcome to MSAL.js Quickstart</h2><br/>
     <h4 id="WelcomeMessage"></h4>
     <button id="SignIn" onclick="signIn()">Sign In</button><br/><br/>
-    <table id="graphData"></table>
+	<pre id="json"></pre>
 
     <script>
         var applicationConfig = {
@@ -28,33 +23,34 @@
         //Pass null for default authority (https://login.microsoftonline.com/common) and tokenReceivedCallback if using popup apis
         var myMSALObj = new Msal.UserAgentApplication(applicationConfig.clientID, null, null);
 
+		// Browser check variables
+		var ua = window.navigator.userAgent;
+		var msie = ua.indexOf('MSIE ');
+		var msie11 = ua.indexOf('Trident/');
+		var msedge = ua.indexOf('Edge/');
+		
         function signIn() {
-            myMSALObj.loginPopup(applicationConfig.graphScopes).then(function (idToken) {
-                //Login Success
-                showWelcomeMessage();
-                acquireTokenAndCallMSGraph();
-            }, function (error) {
-                console.log(error);
-            });
+			if (msie > 0 || msie11 > 0 || msedge > 0) {
+				// NOTE: IE/Edge detected - use redirect
+				signInRedirect();
+			} else {
+				// NOTE: Not using IE browser - use popup
+				signInPopup();
+			}
         }
-
+		
         function signOut() {
             myMSALObj.logout();
         }
 
         function acquireTokenAndCallMSGraph() {
-            //Call acquireTokenSilent (hidden iframe) to obtain a token for Microsoft Graph
-            myMSALObj.acquireTokenSilent(applicationConfig.graphScopes).then(function (accessToken) {
-                callMSGraph(applicationConfig.graphEndpoint, accessToken, graphAPICallback);
-            }, function (error) {
-                //Call acquireTokenPopup (popup window) in case of acquireToken Failure
-                if (error.indexOf("consent_required") !== -1 || error.indexOf("interaction_required") !== -1) {
-                    myMSALObj.acquireTokenPopup(applicationConfig.graphScopes).then(function (accessToken) {
-                        callMSGraph(applicationConfig.graphEndpoint, accessToken, graphAPICallback);
-                    }, function (error) {
-                    });
-                }
-            });
+			if (msie > 0 || msie11 > 0 || msedge > 0) {
+				// NOTE: only for IE and Edge browsers
+				acquireTokenRedirectAndCallMSGraph(myMSALObj);
+			} else {
+				// NOTE: for all other non-IE/Edge browsers (i.e. Chrome, Firefox, etc.)
+				acquireTokenPopupAndCallMSGraph();
+			}
         }
 
         function callMSGraph(theUrl, accessToken, callback) {
@@ -71,18 +67,12 @@
         function graphAPICallback(data) {
             //Display user data on DOM
             var divWelcome = document.getElementById('WelcomeMessage');
-            divWelcome.innerHTML += " to Microsoft Graph API!!";
-            $.each(data, function (key, value) {
-                var tr = $('<tr></tr>');
-                $('<td>' + '<i>' + key + '</i>' + '</td>').appendTo(tr);
-                $('<td>' + value + '</td>').appendTo(tr);
-                tr.appendTo('#graphData');
-            });
+            document.getElementById("json").innerHTML = JSON.stringify(data, null, 2);
         }
 
         function showWelcomeMessage() {
             var divWelcome = document.getElementById('WelcomeMessage');
-            divWelcome.innerHTML += 'Welcome ' + myMSALObj.getUser().name;
+            divWelcome.innerHTML += 'Welcome ' + myMSALObj.getUser().name + " to Microsoft Graph API!!";
             var loginbutton = document.getElementById('SignIn');
             loginbutton.innerHTML = 'Sign Out';
             loginbutton.setAttribute('onclick', 'signOut();');
@@ -92,6 +82,55 @@
             showWelcomeMessage();
             acquireTokenAndCallMSGraph();
         }
+		
+		/* POPUP HELPER FUNCTIONS BELOW */
+		
+		// If not using IE or Edge InPrivate browser, you may replace the contents of signIn() with the contents of signInPopup()
+		function signInPopup() {
+			myMSALObj.loginPopup(applicationConfig.graphScopes).then(function (idToken) {
+                //Login Success
+                showWelcomeMessage();
+                acquireTokenAndCallMSGraph();
+            }, function (error) {
+                console.log(error);
+            });
+		}
+		
+		// If not using IE or Edge InPrivate browser, you may replace the contents of acquireTokenAndCallMSGraph() with the contents of acquireTokenPopupAndCallMSGraph()
+		function acquireTokenPopupAndCallMSGraph() {
+            //Call acquireTokenSilent (iframe) to obtain a token for Microsoft Graph
+            myMSALObj.acquireTokenSilent(applicationConfig.graphScopes).then(function (accessToken) {
+                callMSGraph(applicationConfig.graphEndpoint, accessToken, graphAPICallback);
+            }, function (error) {
+                //Call acquireTokenPopup (popup window) in case of acquireToken Failure
+                if (error.indexOf("consent_required") !== -1 || error.indexOf("interaction_required") !== -1) {
+                    myMSALObj.acquireTokenPopup(applicationConfig.graphScopes).then(function (accessToken) {
+                        callMSGraph(applicationConfig.graphEndpoint, accessToken, graphAPICallback);
+                    }, function (error) {
+                    });
+                }
+            });
+        }
+		
+		/* IE/EDGE-ONLY - REDIRECT HELPER FUNCTIONS BELOW */
+		
+		// NOTE: Below functions are for testing with IE/Edge browsers - can be removed if not testing with these browsers
+		function signInRedirect() {
+            myMSALObj.loginRedirect(applicationConfig.graphScopes);
+        }
+		
+		function acquireTokenRedirectAndCallMSGraph(myMSALObj) {
+            //Call acquireTokenSilent (iframe) to obtain a token for Microsoft Graph
+            myMSALObj.acquireTokenSilent(applicationConfig.graphScopes).then(function (accessToken) {
+                callMSGraph(applicationConfig.graphEndpoint, accessToken, graphAPICallback);
+            }, function (error) {
+                //Call acquireTokenRedirect in case of acquireToken Failure
+                if (error.indexOf("consent_required") !== -1 || error.indexOf("interaction_required") !== -1) {
+                    myMSALObj.acquireTokenRedirect(applicationConfig.graphScopes);
+                }
+            });
+        }
+		
     </script>
 </body>
 </html>
