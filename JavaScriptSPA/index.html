@@ -13,29 +13,12 @@
 <br/><br/>
 <pre id="json"></pre>
 
-<<<<<<< HEAD
 <script>
     var applicationConfig = {
         clientID: '0813e1d1-ad72-46a9-8665-399bba48c201', //This is your client ID
         graphScopes: ["user.read"],
         graphEndpoint: "https://graph.microsoft.com/v1.0/me"
     };
-=======
-    <script>
-		// Browser check variables
-		var ua = window.navigator.userAgent;
-		var msie = ua.indexOf('MSIE ');
-		var msie11 = ua.indexOf('Trident/');
-		var msedge = ua.indexOf('Edge/');
-		var isIE = msie > 0 || msie11 > 0;
-		var isEdge = msedge > 0;
-	
-        var applicationConfig = {
-            clientID: "Enter_the_Application_Id_here", //This is your client ID
-            graphScopes: ["user.read"],
-            graphEndpoint: "https://graph.microsoft.com/v1.0/me"
-        };
->>>>>>> 1fbe10f469b303ec16eccd34c22172576ab7759f
 
     //Pass null for default authority (https://login.microsoftonline.com/common)
     var myMSALObj = new Msal.UserAgentApplication(applicationConfig.clientID, null, acquireTokenRedirectCallBack,
