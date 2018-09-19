@@ -9,6 +9,7 @@
       "x-ms-id": "JavaScriptSpa",
       "x-ms-name": "active-directory-javascript-graphapi-v2",
       "x-ms-version": "2.0",
+      "logoutUrl": "http://localhost:30662/",
       "replyUrlsWithType": [
         {
           "url": "http://localhost:30662/",
