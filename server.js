@@ -3,13 +3,13 @@
 *  See LICENSE in the source repository root for complete license information.
 */
 
-var express = require('express');
-var app = express();
-var morgan = require('morgan');
-var path = require('path');
+const express = require('express');
+const app = express();
+const morgan = require('morgan');
+const path = require('path');
 
 // Initialize variables.
-var port = 30662; // process.env.PORT || 30662;
+const port = 30662; // process.env.PORT || 30662;
 
 // Configure morgan module to log all requests.
 app.use(morgan('dev'));
