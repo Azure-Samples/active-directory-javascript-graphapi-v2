@@ -16,12 +16,12 @@
 <script>
     var applicationConfig = {
         clientID: 'Enter_the_Application_Id_here', //This is your client ID
+        authority: "https://login.microsoftonline.com/common", //Default authority is https://login.microsoftonline.com/common
         graphScopes: ["user.read"],
         graphEndpoint: "https://graph.microsoft.com/v1.0/me"
     };
 
-    //Pass null for default authority (https://login.microsoftonline.com/common)
-    var myMSALObj = new Msal.UserAgentApplication(applicationConfig.clientID, null, acquireTokenRedirectCallBack,
+    var myMSALObj = new Msal.UserAgentApplication(applicationConfig.clientID, applicationConfig.authority, acquireTokenRedirectCallBack,
         {storeAuthStateInCookie: true, cacheLocation: "localStorage"});
 
     function signIn() {
