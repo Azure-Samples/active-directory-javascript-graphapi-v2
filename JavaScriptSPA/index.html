@@ -4,7 +4,6 @@
     <title>Quickstart for MSAL JS</title>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bluebird/3.3.4/bluebird.min.js"></script>
     <script src="https://secure.aadcdn.microsoftonline-p.com/lib/0.2.3/js/msal.js"></script>
-    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
 </head>
 
 <body>
@@ -16,7 +15,7 @@
 <script>
     var applicationConfig = {
         clientID: 'Enter_the_Application_Id_here', //This is your client ID
-        authority: "https://login.microsoftonline.com/common",  //Default authority value is https://login.microsoftonline.com/common
+        authority: "https://login.microsoftonline.com/Enter_the_Tenant_Info_Here",  //Default authority value is https://login.microsoftonline.com/common
         graphScopes: ["user.read"],
         graphEndpoint: "https://graph.microsoft.com/v1.0/me"
     };
