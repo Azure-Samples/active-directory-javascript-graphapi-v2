@@ -1,0 +1,43 @@
+body {
+    height: 100%;
+    background-color: #2b5797; /* For browsers that do not support gradients */
+    background-image: linear-gradient(-90deg,  #2b5797, #603cba); /* Standard syntax (must be last) */
+}
+.container {
+    width: 100%;
+    min-height: 600px;
+}
+
+.leftContainer {
+    color: white;
+    font-size: 46px;
+    font-weight: 200;
+    text-align: center;
+}
+
+.leftContainer, .rightContainer {
+    float: left;
+    width: 100%;
+    max-width: 800px;
+}
+
+#SignIn {
+    height: 50px;
+    width: 150px;
+    background-color: #00A4EF;
+    padding: 14px 24px;
+    border: 0 none;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: white;
+}
+#json {
+    background-color: white;
+    opacity: 0.85;
+    min-height: 600px;
+    width: 100%;
+    display: block;
+    font-size: 14px;
+    overflow: scroll;
+}
