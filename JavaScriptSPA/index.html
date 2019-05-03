@@ -3,7 +3,7 @@
 <head>
     <title>Quickstart for MSAL JS</title>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bluebird/3.3.4/bluebird.min.js"></script>
-    <script src="/msal-1.0.0-preview.4.min.js"></script>
+    <script src="/msal-1.0.0-preview.5.min.js"></script>
 </head>
 
 <body>
@@ -19,8 +19,8 @@
 <script>
     var msalConfig = {
         auth: {
-            clientId: 'Enter_the_Application_Id_here', //This is your client ID
-            authority: "https://login.microsoftonline.com/Enter_the_Tenant_Info_Here" //This is your tenant info
+            clientId: '90e4bba5-5f7f-4f13-88b1-369a72041df2', //This is your client ID
+            authority: "https://login.microsoftonline.com/328d6c53-e6b9-4ea5-ad0f-bf95c9a0c6af" //This is your tenant info
         },
         cache: {
             cacheLocation: "localStorage",
@@ -41,7 +41,7 @@
     var myMSALObj = new Msal.UserAgentApplication(msalConfig);
 
     // Register Callbacks for redirect flow
-    myMSALObj.handleRedirectCallbacks(acquireTokenRedirectCallBack, acquireTokenErrorRedirectCallBack);
+    // myMSALObj.handleRedirectCallback(authRedirectCallBack);
 
     function signIn() {
         myMSALObj.loginPopup(requestObj).then(function (loginResponse) {
@@ -115,16 +115,16 @@
         });
     }
 
-    function acquireTokenRedirectCallBack(response) {
-        if (response.tokenType === "access_token") {
-            callMSGraph(graphConfig.graphMeEndpoint, response.accessToken, graphAPICallback);
+    function authRedirectCallBack(error, response) {
+        if (error) {
+            console.log(error);
         } else {
-            console.log("token type is:" + response.tokenType);
+            if (response.tokenType === "access_token") {
+                callMSGraph(graphConfig.graphMeEndpoint, response.accessToken, graphAPICallback);
+            } else {
+                console.log("token type is:" + response.tokenType);
+            }
         }
-    }
-
-    function  acquireTokenErrorRedirectCallBack(error) {
-        console.log(error);
     }
 
     function requiresInteraction(errorCode) {
