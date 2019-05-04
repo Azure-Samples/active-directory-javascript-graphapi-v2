@@ -17,6 +17,9 @@
         </div>
     </div>
 <script>
+    // can change this to default an experience outside browser use
+    var loginType = isIE ? "REDIRECT" : "POPUP";
+
     var msalConfig = {
         auth: {
             clientId: 'Enter_the_Application_Id_here', //This is your client ID
@@ -41,7 +44,9 @@
     var myMSALObj = new Msal.UserAgentApplication(msalConfig);
 
     // Register Callbacks for redirect flow
-    // myMSALObj.handleRedirectCallback(authRedirectCallBack);
+    if (loginType === "REDIRECT") {
+        myMSALObj.handleRedirectCallback(authRedirectCallBack);
+    }
 
     function signIn() {
         myMSALObj.loginPopup(requestObj).then(function (loginResponse) {
@@ -146,9 +151,6 @@
 
     //If you support IE, our recommendation is that you sign-in using Redirect APIs
     //If you as a developer are testing using Edge InPrivate mode, please add "isEdge" to the if check
-
-    // can change this to default an experience outside browser use
-    var loginType = isIE ? "REDIRECT" : "POPUP";
 
     // runs on page load, change config to try different login types to see what is best for your application
     if (loginType === 'POPUP') {
