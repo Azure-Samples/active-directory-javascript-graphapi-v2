@@ -7,6 +7,7 @@ languages:
 products:
 - azure
 - azure-active-directory
+- office-ms-graph
 ---
 
 # Call Graph API from a JavaScript Single Page Application using msal.js
