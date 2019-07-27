@@ -1,6 +1,6 @@
 ---
 page_type: sample
-description: "How to call Graph API from a JavaScript SPA using msal.js"
+description: "How to call Graph API from a JavaScript SPA using msal.js."
 languages:
 - javascript
 - nodejs
