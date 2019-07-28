@@ -16,7 +16,7 @@ products:
 * [Code Samples](https://github.com/azure-samples/)
 * [Support](https://docs.microsoft.com/azure/active-directory/develop/active-directory-develop-help-support)
 
-Go [to docs.microsoft.com](https://docs.microsoft.com/azure/active-directory/develop/guidedsetups/active-directory-javascriptspa) for information about this code sample and how to configure it
+Go to [docs.microsoft.com](https://docs.microsoft.com/azure/active-directory/develop/guidedsetups/active-directory-javascriptspa) for information about this code sample and how to configure it
 
 ## Community Help and Support
 
