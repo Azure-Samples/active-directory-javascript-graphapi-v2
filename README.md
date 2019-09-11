@@ -1,3 +1,14 @@
+---
+page_type: sample
+languages:
+- html
+- javascript
+products:
+- azure
+description: "We use Stack Overflow with the community to provide support."
+urlFragment: active-directory-javascript-graphapi-v2
+---
+
 # Call Graph API from a JavaScript Single Page Application using msal.js
 ===========================================================
 
