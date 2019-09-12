@@ -1,14 +1,14 @@
 ---
 page_type: sample
-description: "How to call Graph API from a JavaScript SPA using msal.js."
 languages:
+- html
 - javascript
-- nodejs
 products:
 - azure
-- azure-active-directory
-- office-ms-graph
+description: "We use Stack Overflow with the community to provide support."
+urlFragment: active-directory-javascript-graphapi-v2
 ---
+
 
 # Call Graph API from a JavaScript Single Page Application using msal.js
 
