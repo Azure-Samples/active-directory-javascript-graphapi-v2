@@ -30,7 +30,14 @@
             }
           ]
         }
-      ]
+      ],
+      "codeConfigurations": [	
+        {
+		      "settingFile": "..\\JavaScriptSPA\\index.html", 
+		      "appIdToReplace": "Enter_the_Application_Id_here",
+		      "tenantaudienceToReplace": "Enter_the_Tenant_Info_Here"
+         }
+       ]
     }
   ]
 }
