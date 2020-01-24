@@ -30,7 +30,18 @@
             }
           ]
         }
-      ]
+      ],
+      "codeConfigurations": [	
+        {
+	  "settingFile": "/JavaScriptSPA/index.html", 
+          "replaceTokens": 
+            {
+	      "appId": "Enter_the_Application_Id_here",
+	      "tenantId": "Enter_the_Tenant_Info_Here"
+	       "redirectUri": "Enter_the_Redirect_Uri_Here"
+	    }
+	}
+       ]
     }
   ]
 }
