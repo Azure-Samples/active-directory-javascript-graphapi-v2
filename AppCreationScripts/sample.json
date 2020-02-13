@@ -41,14 +41,6 @@
           {
             "key": "redirectUri",
             "value": ".HomePage"
-          },
-          {
-            "key": "graphMeEndpoint",
-            "value": ".HomePage"
-          },
-          {
-            "key": "graphMailEndpoint",
-            "value": ".HomePage"
           }
         ]
       }

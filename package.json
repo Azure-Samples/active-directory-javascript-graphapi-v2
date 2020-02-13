@@ -13,7 +13,7 @@
   "scripts": {
     "start": "nodemon server.js"
   },
-  "description": "---\r page_type: sample\r languages:\r - html\r - javascript\r products:\r - azure\r description: \"We use Stack Overflow with the community to provide support.\"\r urlFragment: active-directory-javascript-graphapi-v2\r ---",
+  "description": "---\r page_type: sample\r languages:\r - javascript\r products:\r - ms-identity\r description: \"A simple vanilla JavaScript single-page application which demonstrates how to configure [msal.js core](https://www.npmjs.com/package/msal) to login, logout, protect a route, and acquire an access token for a protected resource such as Microsoft Graph API.\"\r urlFragment: active-directory-javascript-graphapi-v2\r ---",
   "version": "1.0.0",
   "repository": {
     "type": "git",
