@@ -6,5 +6,30 @@
     "express": "^4.12.3",
     "morgan": "^1.5.2",
     "path": "^0.11.14"
-  }
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.2"
+  },
+  "scripts": {
+    "start": "nodemon server.js"
+  },
+  "description": "---\r page_type: sample\r languages:\r - html\r - javascript\r products:\r - azure\r description: \"We use Stack Overflow with the community to provide support.\"\r urlFragment: active-directory-javascript-graphapi-v2\r ---",
+  "version": "1.0.0",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Azure-Samples/active-directory-javascript-graphapi-v2.git"
+  },
+  "keywords": [
+    "ms-identity",
+    "azure-ad",
+    "javascript",
+    "spa",
+    "node.js",
+    "msal.js"
+  ],
+  "author": "Dogan Erisen",
+  "bugs": {
+    "url": "https://github.com/Azure-Samples/active-directory-javascript-graphapi-v2/issues"
+  },
+  "homepage": "https://github.com/Azure-Samples/active-directory-javascript-graphapi-v2#readme"
 }
