@@ -9,7 +9,7 @@ const isIE = msie > 0 || msie11 > 0;
 const isEdge = msedge > 0;
 
 // Some globals 
-let SignInType;
+let signInType;
 let access_token;
 
 // Select DOM elements to work with
@@ -32,7 +32,6 @@ function authRedirectCallBack(error, response) {
   } else {
     if (response.tokenType === "id_token" && myMSALObj.getAccount() && !myMSALObj.isCallback(window.location.hash)) {
 
-      id_token = response.idToken;
       console.log('id_token acquired at: ' + new Date().toString());
 
       showWelcomeMessage();
@@ -57,13 +56,12 @@ if (myMSALObj.getAccount() && !myMSALObj.isCallback(window.location.hash)) {
 
 function signIn(method) {
   
-  SignInType = isIE ? "Redirect" : method;
+  signInType = isIE ? "Redirect" : method;
 
-  if (SignInType === "Popup") {
+  if (signInType === "Popup") {
     myMSALObj.loginPopup(loginRequest)
       .then(loginResponse => {  
 
-        id_token = loginResponse.idToken;
         console.log('id_token acquired at: ' + new Date().toString());
 
         if (myMSALObj.getAccount()) {
@@ -76,17 +74,17 @@ function signIn(method) {
       console.log(error);
     });
 
-  } else if (SignInType === "Redirect") {
+  } else if (signInType === "Redirect") {
     myMSALObj.loginRedirect(loginRequest)
   }
 }
 
 function readMail() {
   if (myMSALObj.getAccount()) {
-    if(SignInType === "Popup") {
+    if(signInType === "Popup") {
       acquireTokenPopupAndCallMSGraph(graphConfig.graphMailEndpoint, tokenRequest, graphAPICallback);
       mailButton.style.display = 'none';
-    } else if (SignInType === "Redirect") {
+    } else if (signInType === "Redirect") {
       acquireTokenRedirectAndCallMSGraph(graphConfig.graphMeEndpoint, tokenRequest, graphAPICallback);
       mailButton.style.display = 'none';
     }
