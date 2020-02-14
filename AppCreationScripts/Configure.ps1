@@ -199,7 +199,7 @@ Function ConfigureApplications
    Write-Host "Granted permissions."
 
    # Update config file for 'spa'
-   $configFile = $pwd.Path + "\..\JavaScriptSPA\config.js"
+   $configFile = $pwd.Path + "\..\JavaScriptSPA\authConfig.js"
    Write-Host "Updating the sample code ($configFile)"
    $dictionary = @{ "clientId" = $spaAadApplication.AppId;"authority" = "https://login.microsoftonline.com/"+$tenantName;"redirectUri" = $spaAadApplication.HomePage };
    UpdateTextFile -configFilePath $configFile -dictionary $dictionary
