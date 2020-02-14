@@ -19,7 +19,7 @@ app.use(morgan('dev'));
 // Set the front-end folder to serve public assets.
 app.use(express.static('JavaScriptSPA'))
 
-// Set up a route for index.html (and auth.html for redirects).
+// Set up a route for index.html.
 app.get('*', function (req, res) {
     res.sendFile(path.join(__dirname + '/index.html'));
 });
