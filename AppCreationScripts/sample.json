@@ -28,7 +28,7 @@
       {
         "App": "spa",
         "SettingKind": "Text",
-        "SettingFile": "\\..\\JavaScriptSPA\\config.js",
+        "SettingFile": "\\..\\JavaScriptSPA\\authConfig.js",
         "Mappings": [
           {
             "key": "clientId",
