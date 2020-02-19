@@ -27,7 +27,7 @@
     "node.js",
     "msal.js"
   ],
-  "author": "Dogan Erisen",
+  "author": "",
   "bugs": {
     "url": "https://github.com/Azure-Samples/active-directory-javascript-graphapi-v2/issues"
   },
