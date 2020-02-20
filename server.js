@@ -3,13 +3,15 @@
 *  See LICENSE in the source repository root for complete license information.
 */
 
-var express = require('express');
-var app = express();
-var morgan = require('morgan');
-var path = require('path');
+const express = require('express');
+const morgan = require('morgan');
+const path = require('path');
+
+//initialize express.
+const app = express();
 
 // Initialize variables.
-var port = 30662; // process.env.PORT || 30662;
+const port = 3000; // process.env.PORT || 3000;
 
 // Configure morgan module to log all requests.
 app.use(morgan('dev'));
@@ -17,7 +19,7 @@ app.use(morgan('dev'));
 // Set the front-end folder to serve public assets.
 app.use(express.static('JavaScriptSPA'))
 
-// Set up our one route to the index.html file.
+// Set up a route for index.html.
 app.get('*', function (req, res) {
     res.sendFile(path.join(__dirname + '/index.html'));
 });
