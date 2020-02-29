@@ -1,6 +1,7 @@
 // Select DOM elements to work with
-const welcomeDiv = document.getElementById("WelcomeMessage");
-const signInButton = document.getElementById("SignIn");
+const welcomeDiv = document.getElementById("welcomeMessage");
+const signInButton = document.getElementById("signIn");
+const signOutButton = document.getElementById('signOut');
 const cardDiv = document.getElementById("card-div");
 const mailButton = document.getElementById("readMail");
 const profileButton = document.getElementById("seeProfile");
@@ -11,14 +12,13 @@ function showWelcomeMessage(account) {
     // Reconfiguring DOM elements
     cardDiv.style.display = 'initial';
     welcomeDiv.innerHTML = `Welcome ${account.name}`;
-    signInButton.nextElementSibling.style.display = 'none';
-    signInButton.setAttribute("onclick", "signOut();");
-    signInButton.setAttribute('class', "btn btn-success")
-    signInButton.innerHTML = "Sign Out";
+    signInButton.style.display = 'none';
+    signOutButton.style.display = 'initial';
 }
 
 function updateUI(data, endpoint) {
   console.log('Graph API responded at: ' + new Date().toString());
+  console.log(data)
 
   if (endpoint === graphConfig.graphMeEndpoint) {
     const title = document.createElement('p');

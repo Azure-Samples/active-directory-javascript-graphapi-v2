@@ -7,4 +7,4 @@
 * Added new feature for reading user mails through MS Graph API.
 * UI redesigned with Bootstrap 4 framework.
 * Added AppCreationScripts for Powershell users.
-* Added tokenization for for sovereign clouds and graph endpoints. 
+* Added tokenization for for sovereign clouds and graph endpoints.

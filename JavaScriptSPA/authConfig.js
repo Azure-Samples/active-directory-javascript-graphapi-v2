@@ -2,9 +2,9 @@
   // Config object to be passed to Msal on creation
   const msalConfig = {
     auth: {
-      clientId: "Enter_the_Application_Id_Here",
-      authority: "Enter_the_Cloud_Instance_Id_HereEnter_the_Tenant_Info_Here",
-      redirectUri: "Enter_the_Redirect_Uri_Here",
+      clientId: "361c9ef8-eb0e-4c81-a8b8-bd4b6e2d5b15",
+      authority: "https://login.microsoftonline.com/common/",
+      redirectUri: "http://localhost:3000/",
     },
     cache: {
       cacheLocation: "sessionStorage", // This configures where your cache will be stored

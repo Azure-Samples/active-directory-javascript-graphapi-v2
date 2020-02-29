@@ -16,14 +16,9 @@
     <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
       <a class="navbar-brand" href="/">MS Identity Platform</a>
       <div class="btn-group ml-auto dropleft">
-          <button type="button" id="SignIn" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            Sign In
-          </button>
-          <div class="dropdown-menu">
-            <button class="dropdown-item" id="Popup" onclick="signIn(this.id)">Sign in using Popup</button>
-            <button class="dropdown-item" id="Redirect" onclick="signIn(this.id)">Sign in using Redirect</button>
-          </div>
-      </div>
+        <button type="button" id="signIn" class="btn btn-secondary" onclick="signIn()">Sign In</button>
+        <button type="button" id="signOut" class="btn btn-success" onclick="signOut()" style="display:none">Sign Out</button>
+    </div>
     </nav>
     <br>
     <h5 class="card-header text-center">Vanilla JavaScript SPA calling MS Graph API with MSAL.JS</h5>
@@ -32,14 +27,14 @@
     <div id="card-div" class="col-md-3" style="display:none">
     <div class="card text-center">
       <div class="card-body">
-        <h5 class="card-title" id="WelcomeMessage">Please sign-in to see your profile and read your mails</h5>
+        <h5 class="card-title" id="welcomeMessage">Please sign-in to see your profile and read your mails</h5>
         <div id="profile-div"></div>
         <br>
         <br>
         <button class="btn btn-primary" id="seeProfile" onclick="seeProfile()">See Profile</button>
         <br>
         <br>
-        <button class="btn btn-primary" id="readMail" onclick="readMail()">Read Mails</button>
+        <button class="btn btn-primary" id="readMail" onclick="readMail()" style="display:none">Read Mails</button>
       </div>
     </div>
     </div>
@@ -65,8 +60,9 @@
     <!-- importing app scripts | load order is important -->
     <script type="text/javascript" src="./authConfig.js"></script>
     <script type="text/javascript" src="./graphConfig.js"></script>
-    <script type="text/javascript" src="./ui.js"></script>  
-    <script type="text/javascript" src="./auth.js"></script>
+    <script type="text/javascript" src="./ui.js"></script>
+    <!-- replace with authRedirect if you would like to use redirect flow -->  
+    <script type="text/javascript" src="./authRedirect.js"></script>
     <script type="text/javascript" src="./graph.js"></script>
 
   </body>
