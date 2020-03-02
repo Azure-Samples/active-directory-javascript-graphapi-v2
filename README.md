@@ -14,7 +14,7 @@ urlFragment: "active-directory-javascript-graphapi-v2"
 
 A simple vanilla JavaScript single-page application which demonstrates how to configure [MSAL.JS Core](https://www.npmjs.com/package/msal) to login, logout, protect a route, and acquire an access token for a protected resource such as [Microsoft Graph API](https://docs.microsoft.com/en-us/graph/overview).
 
-**Note:** A detailed tutorial covering this sample can be found [here](https://docs.microsoft.com/en-us/azure/active-directory/develop/tutorial-v2-javascript-spa).
+**Note:** A detailed tutorial covering this sample can be found [here](https://docs.microsoft.com/en-us/azure/active-directory/develop/quickstart-v2-javascript).
 
 ## Contents
 
@@ -48,8 +48,17 @@ A simple vanilla JavaScript single-page application which demonstrates how to co
 
 ## Running the sample
 
-1. To start the sample application, run `npm start`.
-2. Next, open a browser to [http://localhost:3000](http://localhost:3000).
+1. Configure authentication and authorization parameters:
+   1. Open `authConfig.js`
+   2. Replace the string `"Enter_the_Application_Id_Here"` with your app/client ID on AAD Portal.
+   3. Replace the string `"Enter_the_Cloud_Instance_Id_HereEnter_the_Tenant_Info_Here"` with `"https://login.microsoftonline.com/common/"` (*note*: This is for multi-tenant applications located on the global Azure cloud. For more information, see the[documentation](https://docs.microsoft.com/en-us/azure/active-directory/develop/quickstart-v2-javascript)).
+   4. Replace the string `"Enter_the_Redirect_Uri_Here"` with the redirect uri you setup on AAD Portal.
+2. Configure the parameters for calling MS Graph API:
+   1. Open `graphConfig.js`.
+   2. Replace the string `"Enter_the_Graph_Endpoint_Herev1.0/me"` with `"https://graph.microsoft.com/v1.0/me"`.
+   3. Replace the string `"Enter_the_Graph_Endpoint_Herev1.0/me/messages"` with `"https://graph.microsoft.com/v1.0/me/messages"`.
+3. To start the sample application, run `npm start`.
+4. Next, open a browser to [http://localhost:3000](http://localhost:3000).
 
 ## Key points
 
