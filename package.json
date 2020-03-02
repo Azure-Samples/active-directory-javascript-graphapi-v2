@@ -11,7 +11,8 @@
     "nodemon": "^2.0.2"
   },
   "scripts": {
-    "start": "nodemon server.js"
+    "start": "node server.js",
+    "dev": "nodemon server.js"
   },
   "description": "---\r page_type: sample\r languages:\r - javascript\r products:\r - ms-identity\r description: \"A simple vanilla JavaScript single-page application which demonstrates how to configure [msal.js core](https://www.npmjs.com/package/msal) to login, logout, protect a route, and acquire an access token for a protected resource such as Microsoft Graph API.\"\r urlFragment: active-directory-javascript-graphapi-v2\r ---",
   "version": "1.0.0",
