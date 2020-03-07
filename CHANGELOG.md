@@ -8,3 +8,5 @@
 * UI redesigned with Bootstrap 4 framework.
 * Added AppCreationScripts for Powershell users.
 * Added tokenization for for sovereign clouds and graph endpoints.
+
+## 3/06/2020

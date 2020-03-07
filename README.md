@@ -22,8 +22,10 @@ A simple vanilla JavaScript single-page application which demonstrates how to co
 | `AppCreationScripts`   | Contains automation scripts for Powershell users (can be safely removed if desired).|
 | `JavaScriptSPA`   | Contains sample source files.  |
 | `auth.js`   | Main application logic resides here.                     |
-| `config.js`   | Contains configuration parameters for the sample. |
+| `authConfig.js`   | Contains configuration parameters for the sample. |
 | `graph.js`   | Provides a helper function for calling MS Graph API.   |
+| `graphConfig.js`   | Contains API endpoints for MS Graph.   |
+| `ui.js`   | Contains UI logic.   |
 | `index.html`   |  Contains the UI of the sample.                       |
 | `.gitignore`      | Defines what to ignore at commit time.      |
 | `CHANGELOG.md`    | List of changes to the sample.             |

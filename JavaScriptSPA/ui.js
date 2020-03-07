@@ -39,7 +39,9 @@ function updateUI(data, endpoint) {
     if (data.value.length < 1) {
       alert("Your mailbox is empty!")
     } else {
+  
       const tabList = document.getElementById("list-tab");
+      tabList.innerHTML = ''; // clear tabList at each readMail call
       const tabContent = document.getElementById("nav-tabContent");
 
       data.value.map((d, i) => {

@@ -1,5 +1,3 @@
-// TODO: USE GRAPH SDK
-
 // Helper function to call MS Graph API endpoint 
 // using authorization bearer token scheme
 function callMSGraph(endpoint, token, callback) {
