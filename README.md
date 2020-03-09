@@ -21,7 +21,8 @@ A simple vanilla JavaScript single-page application which demonstrates how to co
 |-------------------|--------------------------------------------|
 | `AppCreationScripts`   | Contains automation scripts for Powershell users (can be safely removed if desired).|
 | `JavaScriptSPA`   | Contains sample source files.  |
-| `auth.js`   | Main application logic resides here.                     |
+| `authPopup.js`   | Main authentication logic resides here.            |
+| `authRedirect.js`   | Use this instead of `authPopup.js` for authentication with redirect flow.   |
 | `authConfig.js`   | Contains configuration parameters for the sample. |
 | `graph.js`   | Provides a helper function for calling MS Graph API.   |
 | `graphConfig.js`   | Contains API endpoints for MS Graph.   |

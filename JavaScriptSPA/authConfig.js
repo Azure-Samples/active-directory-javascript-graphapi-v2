@@ -1,5 +1,7 @@
  
-// Config object to be passed to Msal on creation
+// Config object to be passed to Msal on creation.
+// For a full list of msal.js configuration parameters, 
+// visit https://azuread.github.io/microsoft-authentication-library-for-js/docs/msal/modules/_authenticationparameters_.html
 const msalConfig = {
   auth: {
     clientId: "361c9ef8-eb0e-4c81-a8b8-bd4b6e2d5b15",

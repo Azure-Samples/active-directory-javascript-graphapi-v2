@@ -48,12 +48,11 @@ function seeProfile() {
 
 function readMail() {
   if (myMSALObj.getAccount()) {
-      getTokenPopup(tokenRequest)
-        .then(response => {
-          callMSGraph(graphConfig.graphMailEndpoint, response.accessToken, updateUI);
-          mailButton.style.display = 'none';
-        }).catch(error => {
-          console.log(error);
-        });
+    getTokenPopup(tokenRequest)
+      .then(response => {
+        callMSGraph(graphConfig.graphMailEndpoint, response.accessToken, updateUI);
+      }).catch(error => {
+        console.log(error);
+      });
   }
 }
