@@ -12,5 +12,4 @@
 ## 3/09/2020
 
 * Separated authentication with popup vs. redirect flows into different files.
-* Added Graph-SDK for MS Graph API calls.
 * Further refactoring changes.
