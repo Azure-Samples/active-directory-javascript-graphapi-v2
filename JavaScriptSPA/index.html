@@ -4,19 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
     <title>Quickstart | MSAL.JS Vanilla JavaScript SPA</title>
-    
-    <!-- IE support: add promises polyfill before msal.js  -->    
-    <!-- polyfilling promise -->
-    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/es6-promise/dist/es6-promise.auto.min.js"></script>
-    <!-- polyfilling fetch -->
-    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/whatwg-fetch/dist/fetch.umd.min.js"></script>
-    <!-- depending on your browser you might want to include babel polyfill -->
-    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@babel/polyfill@7.4.4/dist/polyfill.min.js"></script>
-    
-        <!-- msal.js with a fallback to backup CDN -->
+     
+    <!-- msal.js with a fallback to backup CDN -->
     <script type="text/javascript" src="https://alcdn.msauth.net/lib/1.2.1/js/msal.js" integrity="sha384-9TV1245fz+BaI+VvCjMYL0YDMElLBwNS84v3mY57pXNOt6xcUYch2QLImaTahcOP" crossorigin="anonymous"></script>
     <script type="text/javascript">
-      if(typeof Msal === 'undefined')document.write(unescape("%3Cscript src='https://alcdn.msftauth.net/lib/1.1.3/js/msal.js' type='text/javascript' integrity='sha384-m/3NDUcz4krpIIiHgpeO0O8uxSghb+lfBTngquAo2Zuy2fEF+YgFeP08PWFo5FiJ' crossorigin='anonymous'%3E%3C/script%3E"));
+      if(typeof Msal === 'undefined')document.write(unescape("%3Cscript src='https://alcdn.msftauth.net/lib/1.2.1/js/msal.js' type='text/javascript' integrity='sha384-m/3NDUcz4krpIIiHgpeO0O8uxSghb+lfBTngquAo2Zuy2fEF+YgFeP08PWFo5FiJ' crossorigin='anonymous'%3E%3C/script%3E"));
     </script>
 
     <!-- adding Bootstrap 4 for UI components  -->
@@ -27,14 +19,14 @@
       <a class="navbar-brand" href="/">MS Identity Platform</a>
       <div class="btn-group ml-auto dropleft">
         <button type="button" id="signIn" class="btn btn-secondary" onclick="signIn()">Sign In</button>
-        <button type="button" id="signOut" class="btn btn-success" onclick="signOut()" style="display:none">Sign Out</button>
+        <button type="button" id="signOut" class="btn btn-success d-none" onclick="signOut()">Sign Out</button>
     </div>
     </nav>
     <br>
     <h5 class="card-header text-center">Vanilla JavaScript SPA calling MS Graph API with MSAL.JS</h5>
     <br>
     <div class="row" style="margin:auto" >
-    <div id="card-div" class="col-md-3" style="display:none">
+    <div id="card-div" class="col-md-3 d-none">
     <div class="card text-center">
       <div class="card-body">
         <h5 class="card-title" id="welcomeMessage">Please sign-in to see your profile and read your mails</h5>
@@ -44,7 +36,7 @@
         <button class="btn btn-primary" id="seeProfile" onclick="seeProfile()">See Profile</button>
         <br>
         <br>
-        <button class="btn btn-primary" id="readMail" onclick="readMail()" style="display:none">Read Mails</button>
+        <button class="btn btn-primary d-none" id="readMail" onclick="readMail()">Read Mails</button>
       </div>
     </div>
     </div>
@@ -71,7 +63,9 @@
     <script type="text/javascript" src="./authConfig.js"></script>
     <script type="text/javascript" src="./graphConfig.js"></script>
     <script type="text/javascript" src="./ui.js"></script>
-    <!-- replace next with authRedirect.js if you would like to use redirect flow -->  
+    
+    <!-- replace next line with authRedirect.js if you would like to use the redirect flow -->
+    <!-- <script type="text/javascript" src="./authRedirect.js"></script>   -->
     <script type="text/javascript" src="./authPopup.js"></script>
     <script type="text/javascript" src="./graph.js"></script>
   </body>

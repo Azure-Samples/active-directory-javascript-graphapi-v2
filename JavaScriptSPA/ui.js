@@ -7,18 +7,18 @@ const mailButton = document.getElementById("readMail");
 const profileButton = document.getElementById("seeProfile");
 const profileDiv = document.getElementById("profile-div");
 
+
 function showWelcomeMessage(account) {
 
     // Reconfiguring DOM elements
-    cardDiv.style.display = 'initial';
+    cardDiv.classList.remove('d-none');
     welcomeDiv.innerHTML = `Welcome ${account.name}`;
-    signInButton.style.display = 'none';
-    signOutButton.style.display = 'initial';
+    signInButton.classList.add('d-none');
+    signOutButton.classList.remove('d-none');
 }
 
 function updateUI(data, endpoint) {
   console.log('Graph API responded at: ' + new Date().toString());
-  console.log(data)
 
   if (endpoint === graphConfig.graphMeEndpoint) {
     const title = document.createElement('p');
