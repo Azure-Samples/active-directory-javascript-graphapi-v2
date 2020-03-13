@@ -14,7 +14,7 @@ urlFragment: "active-directory-javascript-graphapi-v2"
 
 A simple vanilla JavaScript single-page application which demonstrates how to configure [MSAL.JS Core](https://www.npmjs.com/package/msal) to login, logout, protect a route, and acquire an access token for a protected resource such as [Microsoft Graph API](https://docs.microsoft.com/en-us/graph/overview).
 
-**Note:** A detailed tutorial covering this sample can be found [here](https://docs.microsoft.com/en-us/azure/active-directory/develop/quickstart-v2-javascript).
+**Note:** A quickstart guide covering this sample can be found [here](https://docs.microsoft.com/en-us/azure/active-directory/develop/quickstart-v2-javascript).
 
 ## Contents
 
@@ -22,9 +22,12 @@ A simple vanilla JavaScript single-page application which demonstrates how to co
 |-------------------|--------------------------------------------|
 | `AppCreationScripts`   | Contains automation scripts for Powershell users (can be safely removed if desired).|
 | `JavaScriptSPA`   | Contains sample source files.  |
-| `auth.js`   | Main application logic resides here.                     |
-| `config.js`   | Contains configuration parameters for the sample. |
+| `authPopup.js`   | Main authentication logic resides here (using Popup flow).            |
+| `authRedirect.js`   | Use this instead of `authPopup.js` for authentication with redirect flow.   |
+| `authConfig.js`   | Contains configuration parameters for the sample. |
 | `graph.js`   | Provides a helper function for calling MS Graph API.   |
+| `graphConfig.js`   | Contains API endpoints for MS Graph.   |
+| `ui.js`   | Contains UI logic.   |
 | `index.html`   |  Contains the UI of the sample.                       |
 | `.gitignore`      | Defines what to ignore at commit time.      |
 | `CHANGELOG.md`    | List of changes to the sample.             |
@@ -51,14 +54,14 @@ A simple vanilla JavaScript single-page application which demonstrates how to co
 1. Configure authentication and authorization parameters:
    1. Open `authConfig.js`
    2. Replace the string `"Enter_the_Application_Id_Here"` with your app/client ID on AAD Portal.
-   3. Replace the string `"Enter_the_Cloud_Instance_Id_HereEnter_the_Tenant_Info_Here"` with `"https://login.microsoftonline.com/common/"` (*note*: This is for multi-tenant applications located on the global Azure cloud. For more information, see the[documentation](https://docs.microsoft.com/en-us/azure/active-directory/develop/quickstart-v2-javascript)).
+   3. Replace the string `"Enter_the_Cloud_Instance_Id_HereEnter_the_Tenant_Info_Here"` with `"https://login.microsoftonline.com/common/"` (*note*: This is for multi-tenant applications located on the global Azure cloud. For more information, see the [documentation](https://docs.microsoft.com/en-us/azure/active-directory/develop/quickstart-v2-javascript)).
    4. Replace the string `"Enter_the_Redirect_Uri_Here"` with the redirect uri you setup on AAD Portal.
 2. Configure the parameters for calling MS Graph API:
    1. Open `graphConfig.js`.
    2. Replace the string `"Enter_the_Graph_Endpoint_Herev1.0/me"` with `"https://graph.microsoft.com/v1.0/me"`.
    3. Replace the string `"Enter_the_Graph_Endpoint_Herev1.0/me/messages"` with `"https://graph.microsoft.com/v1.0/me/messages"`.
 3. To start the sample application, run `npm start`.
-4. Next, open a browser to [http://localhost:3000](http://localhost:3000).
+4. Finally, open a browser to [http://localhost:3000](http://localhost:3000).
 
 ## Key points
 
