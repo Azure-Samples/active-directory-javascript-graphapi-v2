@@ -1,5 +1,8 @@
 # CHANGELOG
 
+## 3/30/2020
+* Updated to msal.js 1.2.2.
+
 ## 3/09/2020
 
 * Separated authentication with popup vs. redirect flows into different files.
