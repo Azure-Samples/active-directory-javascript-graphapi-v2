@@ -43,6 +43,21 @@
             "value": ".HomePage"
           }
         ]
+      },
+      {
+        "App": "spa",
+        "SettingKind": "Text",
+        "SettingFile": "\\..\\JavaScriptSPA\\graphConfig.js",
+        "Mappings": [
+          {
+            "key": "graphMeEndpoint",
+            "value": "'https://graph.microsoft.com/v1.0/me/'"
+          },
+          {
+            "key": "graphMailEndpoint",
+            "value": "'https://graph.microsoft.com/v1.0/me/messages/'"
+          }
+        ]
       }
     ]
   }

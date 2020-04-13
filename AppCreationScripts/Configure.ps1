@@ -203,6 +203,12 @@ Function ConfigureApplications
    Write-Host "Updating the sample code ($configFile)"
    $dictionary = @{ "clientId" = $spaAadApplication.AppId;"authority" = "https://login.microsoftonline.com/"+$tenantName;"redirectUri" = $spaAadApplication.HomePage };
    UpdateTextFile -configFilePath $configFile -dictionary $dictionary
+
+   # Update config file for 'spa'
+   $configFile = $pwd.Path + "\..\JavaScriptSPA\graphConfig.js"
+   Write-Host "Updating the sample code ($configFile)"
+   $dictionary = @{ "graphMeEndpoint" = 'https://graph.microsoft.com/v1.0/me/';"graphMailEndpoint" = 'https://graph.microsoft.com/v1.0/me/messages/' };
+   UpdateTextFile -configFilePath $configFile -dictionary $dictionary
   
    Add-Content -Value "</tbody></table></body></html>" -Path createdApps.html  
 }
