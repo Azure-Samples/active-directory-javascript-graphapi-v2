@@ -46,7 +46,7 @@ A simple vanilla JavaScript single-page application which demonstrates how to co
 ## Setup
 
 1. [Register a new application](https://docs.microsoft.com/azure/active-directory/develop/scenario-spa-app-registration) in the [Azure Portal](https://portal.azure.com). Ensure that the application is enabled for the [implicit flow](https://docs.microsoft.com/en-us/azure/active-directory/develop/v2-oauth2-implicit-grant-flow).
-2. Open the [/JavaScriptSPA/config.js](./JavaScriptSPA/config.js) file and provide the required configuration values.
+2. Open the [/JavaScriptSPA/authConfig.js](./JavaScriptSPA/authconfig.js) file and provide the required configuration values.
 3. On the command line, navigate to the root of the repository, and run `npm install` to install the project dependencies via npm.
 
 ## Running the sample
