@@ -108,6 +108,37 @@ Function UpdateTextFile([string] $configFilePath, [System.Collections.HashTable]
     Set-Content -Path $configFilePath -Value $lines -Force
 }
 
+Function ReplaceInLine([string] $line, [string] $key, [string] $value)
+{
+    $index = $line.IndexOf($key)
+    if ($index -ige 0)
+    {
+        $index2 = $index+$key.Length
+        $line = $line.Substring(0, $index) + $value + $line.Substring($index2)
+    }
+    return $line
+}
+
+Function ReplaceInTextFile([string] $configFilePath, [System.Collections.HashTable] $dictionary)
+{
+    $lines = Get-Content $configFilePath
+    $index = 0
+    while($index -lt $lines.Length)
+    {
+        $line = $lines[$index]
+        foreach($key in $dictionary.Keys)
+        {
+            if ($line.Contains($key))
+            {
+                $lines[$index] = ReplaceInLine $line $key $dictionary[$key]
+            }
+        }
+        $index++
+    }
+
+    Set-Content -Path $configFilePath -Value $lines -Force
+}
+
 Set-Content -Value "<html><body><table>" -Path createdApps.html
 Add-Content -Value "<thead><tr><th>Application</th><th>AppId</th><th>Url in the Azure portal</th></tr></thead><tbody>" -Path createdApps.html
 
@@ -201,8 +232,8 @@ Function ConfigureApplications
    # Update config file for 'spa'
    $configFile = $pwd.Path + "\..\JavaScriptSPA\authConfig.js"
    Write-Host "Updating the sample code ($configFile)"
-   $dictionary = @{ "clientId" = $spaAadApplication.AppId;"authority" = "https://login.microsoftonline.com/"+$tenantName;"redirectUri" = $spaAadApplication.HomePage };
-   UpdateTextFile -configFilePath $configFile -dictionary $dictionary
+   $dictionary = @{ "Enter_the_Application_Id_Here" = $spaAadApplication.AppId;"Enter_the_Cloud_Instance_Id_HereEnter_the_Tenant_Info_Here" = "https://login.microsoftonline.com/"+$tenantName;"Enter_the_Redirect_Uri_Here" = $spaAadApplication.HomePage };
+   ReplaceInTextFile -configFilePath $configFile -dictionary $dictionary
 
    # Update config file for 'spa'
    $configFile = $pwd.Path + "\..\JavaScriptSPA\graphConfig.js"
