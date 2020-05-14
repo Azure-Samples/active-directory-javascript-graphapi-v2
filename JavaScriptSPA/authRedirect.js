@@ -50,7 +50,7 @@ function signOut() {
 
 // This function can be removed if you do not need to support IE
 function getTokenRedirect(request, endpoint) {
-  return myMSALObj.acquireTokenSilent(request, endpoint)
+  return myMSALObj.acquireTokenSilent(request)
       .then((response) => {
         console.log(response);
         if (response.accessToken) {
