@@ -41,7 +41,8 @@ A simple vanilla JavaScript single-page application which demonstrates how to co
 
 ## Prerequisites
 
-[Node](https://nodejs.org/en/) must be installed to run this sample.
+- [Node](https://nodejs.org/en/) must be installed to run this sample.
+- A modern web browser. This sample uses **ES6** conventions and will not run on **Internet Explorer**.
 
 ## Setup
 
