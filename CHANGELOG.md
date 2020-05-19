@@ -1,7 +1,5 @@
 # CHANGELOG
 
-<<<<<<< Updated upstream
-=======
 ## 5/19/2020
 
 * Updated to msal.js 1.3.1.
@@ -12,8 +10,8 @@
 * Updated to msal.js 1.3.0.
 * Improved the redirect flow.
 
->>>>>>> Stashed changes
 ## 3/30/2020
+
 * Updated to msal.js 1.2.2.
 
 ## 3/09/2020
