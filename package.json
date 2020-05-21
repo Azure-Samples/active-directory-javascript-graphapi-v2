@@ -4,7 +4,7 @@
   "main": "server.js",
   "dependencies": {
     "express": "^4.12.3",
-    "morgan": "^1.5.2",
+    "morgan": "^1.5.2"
   },
   "devDependencies": {
     "nodemon": "^2.0.2"

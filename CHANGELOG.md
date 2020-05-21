@@ -1,5 +1,10 @@
 # CHANGELOG
 
+## 5/19/2020
+
+* Updated to msal.js 1.3.1.
+* Removed 'path' package from dependencies.
+
 ## 4/28/2020
 
 * Updated to msal.js 1.3.0.

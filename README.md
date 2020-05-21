@@ -22,28 +22,29 @@ A simple vanilla JavaScript single-page application which demonstrates how to co
 
 | File/folder       | Description                                |
 |-------------------|--------------------------------------------|
-| `AppCreationScripts`   | Contains automation scripts for Powershell users (can be safely removed if desired).|
-| `JavaScriptSPA`   | Contains sample source files.  |
-| `authPopup.js`   | Main authentication logic resides here (using Popup flow).            |
-| `authRedirect.js`   | Use this instead of `authPopup.js` for authentication with redirect flow.   |
+| `AppCreationScripts` | Contains automation scripts for Powershell users (can be safely removed if desired). |
+| `JavaScriptSPA`   | Contains sample source files.              |
+| `authPopup.js`    | Main authentication logic resides here (using Popup flow). |
+| `authRedirect.js` | Use this instead of `authPopup.js` for authentication with redirect flow. |
 | `authConfig.js`   | Contains configuration parameters for the sample. |
-| `graph.js`   | Provides a helper function for calling MS Graph API.   |
-| `graphConfig.js`   | Contains API endpoints for MS Graph.   |
-| `ui.js`   | Contains UI logic.   |
-| `index.html`   |  Contains the UI of the sample.                       |
-| `.gitignore`      | Defines what to ignore at commit time.      |
+| `graph.js`        | Provides a helper function for calling MS Graph API. |
+| `graphConfig.js`  | Contains API endpoints for MS Graph.       |
+| `ui.js`           | Contains UI logic.                         |
+| `index.html`      |  Contains the UI of the sample.            |
+| `.gitignore`      | Defines what to ignore at commit time.     |
 | `CHANGELOG.md`    | List of changes to the sample.             |
 | `CODE_OF_CONDUCT.md` | Code of Conduct information.            |
 | `CONTRIBUTING.md` | Guidelines for contributing to the sample. |
 | `LICENSE`         | The license for the sample.                |
-| `package.json`    | Package manifest for npm.                   |
+| `package.json`    | Package manifest for npm.                  |
 | `README.md`       | This README file.                          |
 | `SECURITY.md`     | Security disclosures.                      |
-| `server.js`     | Implements a simple Node server to serve index.html.  |
+| `server.js`       | Implements a simple Node server to serve index.html.  |
 
 ## Prerequisites
 
-[Node](https://nodejs.org/en/) must be installed to run this sample.
+- [Node](https://nodejs.org/en/) must be installed to run this sample.
+- A modern web browser. This sample uses **ES6** conventions and will not run on **Internet Explorer**.
 
 ## Setup
 
