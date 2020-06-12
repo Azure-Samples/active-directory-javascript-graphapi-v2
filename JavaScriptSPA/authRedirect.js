@@ -59,7 +59,7 @@ function getTokenRedirect(request, endpoint) {
 
             if (accessToken) {
               try {
-                callMSGraph(graphConfig.graphMailEndpoint, accessToken, updateUI);
+                callMSGraph(endpoint, accessToken, updateUI);
               } catch(err) {
                 console.log(err)
               } finally {
