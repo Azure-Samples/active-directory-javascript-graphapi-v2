@@ -2,6 +2,7 @@
 page_type: sample
 languages:
 - javascript
+- html
 products:
 - microsoft-identity-platform
 - azure-active-directory-v2
@@ -10,11 +11,13 @@ description: "A simple JavaScript single-page application calling Microsoft Grap
 urlFragment: "active-directory-javascript-graphapi-v2"
 ---
 
-# MSAL JavaScript Sample Application
+# MSAL JavaScript Single-page Application using Implicit Flow
 
 A simple vanilla JavaScript single-page application which demonstrates how to configure [MSAL.JS Core](https://www.npmjs.com/package/msal) to login, logout, protect a route, and acquire an access token for a protected resource such as [Microsoft Graph API](https://docs.microsoft.com/en-us/graph/overview).
 
-**Note:** A quickstart guide covering this sample can be found [here](https://docs.microsoft.com/en-us/azure/active-directory/develop/quickstart-v2-javascript).
+**Note:** A quickstart guide covering this sample can be found [here](https://docs.microsoft.com/azure/active-directory/develop/quickstart-v2-javascript).
+
+**Note:** A more detailed tutorial covering this sample can be found [here](https://docs.microsoft.com/azure/active-directory/develop/tutorial-v2-javascript-spa).
 
 ## Contents
 
