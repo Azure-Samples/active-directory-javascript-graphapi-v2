@@ -6,7 +6,7 @@ languages:
 products:
 - microsoft-identity-platform
 - azure-active-directory-v2
-- microsoft-graph-api
+- ms-graph
 description: "A simple JavaScript single-page application calling Microsoft Graph API using msal.js (w/ AAD v2 endpoint)"
 urlFragment: "active-directory-javascript-graphapi-v2"
 ---
