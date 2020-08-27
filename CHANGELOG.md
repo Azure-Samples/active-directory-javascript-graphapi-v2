@@ -1,5 +1,12 @@
 # CHANGELOG
 
+## 08/27/2020
+
+* Updated msal.js to 1.4.0.
+* Added link to docs in authConfig.js.
+* Updated sample.json to resolve the implicit flow check issue.
+* Minor README.md enhancements.
+
 ## 08/05/2020
 
 * Updated msal.js 1.3.4.

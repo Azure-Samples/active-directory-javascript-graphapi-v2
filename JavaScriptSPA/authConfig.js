@@ -14,7 +14,8 @@ const msalConfig = {
   }
 };  
   
-// Add here scopes for id token to be used at MS Identity Platform endpoints.
+// Add here the scopes to request when obtaining an access token for MS Graph API
+// for more, visit https://github.com/AzureAD/microsoft-authentication-library-for-js/blob/dev/lib/msal-core/docs/scopes.md
 const loginRequest = {
   scopes: ["openid", "profile", "User.Read"]
 };
