@@ -19,6 +19,8 @@ A simple vanilla JavaScript single-page application which demonstrates how to co
 
 **Note:** A more detailed tutorial covering this sample can be found [here](https://docs.microsoft.com/azure/active-directory/develop/tutorial-v2-javascript-spa).
 
+> :information_source: This sample is using MSAL.js 1.x. See [this](https://github.com/Azure-Samples/ms-identity-javascript-v2) for a sample using MSAL.js 2.x with authorization code grant (w/ PKCE)
+
 ## Contents
 
 | File/folder       | Description                                |
