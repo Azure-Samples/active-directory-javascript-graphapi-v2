@@ -26,9 +26,6 @@ function authRedirectCallBack(error, response) {
           callMSGraph(graphConfig.graphMailEndpoint, accessToken, updateUI);
         } catch(err) {
           console.log(err)
-        } finally {
-          profileButton.classList.add('d-none');
-          mailButton.classList.remove('d-none');
         }
       } else {
           console.log("token type is:" + response.tokenType);
@@ -62,9 +59,6 @@ function getTokenRedirect(request, endpoint) {
                 callMSGraph(endpoint, accessToken, updateUI);
               } catch(err) {
                 console.log(err)
-              } finally {
-                profileButton.classList.add('d-none');
-                mailButton.classList.remove('d-none');
               }
             }
         }

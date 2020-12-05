@@ -1,5 +1,10 @@
 # CHANGELOG
 
+## 11/28/2020
+
+* Updated msal.js to 1.4.4
+* Removed UI update code from authentication.
+
 ## 08/27/2020
 
 * Updated msal.js to 1.4.0.
